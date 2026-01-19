@@ -1,0 +1,156 @@
+/* Pink Theme - 甜美少女风格 🌸 */
+[data-theme="pink"] {
+  
+  /* 基础变量 - 更圆润的边角 */
+  --radius: 1.25rem;
+
+  /* 主色调 - 温柔玫瑰粉 */
+  --primary: 350 80% 68%; /* 柔和玫瑰粉 */
+  --primary-foreground: 0 0% 100%;
+  
+  /* 背景色 - 奶油粉白 */
+  --background: 20 60% 99%; /* 温暖的奶油白 */
+  --foreground: 350 25% 30%;
+  
+  /* 卡片 - 柔和白带粉调 */
+  --card: 350 50% 99%;
+  --card-foreground: 350 25% 30%;
+  
+  /* 弹出层 */
+  --popover: 350 50% 99%;
+  --popover-foreground: 350 25% 30%;
+  
+  /* 次要色 - 薰衣草粉紫 */
+  --secondary: 320 40% 95%;
+  --secondary-foreground: 320 40% 45%;
+  
+  /* 静音色 - 灰粉调 */
+  --muted: 350 30% 95%;
+  --muted-foreground: 350 15% 55%;
+  
+  /* 强调色 - 蜜桃橘粉 */
+  --accent: 15 70% 94%;
+  --accent-foreground: 15 60% 45%;
+  
+  /* 破坏性操作 - 柔和红 */
+  --destructive: 0 70% 60%;
+  --destructive-foreground: 0 0% 100%;
+  
+  /* 边框 - 淡玫瑰 */
+  --border: 350 40% 90%;
+  --input: 350 50% 92%;
+  
+  /* 环形指示器 */
+  --ring: 350 80% 68%;
+}
+
+/* 粉色主题 Body 背景 - 梦幻渐变 */
+[data-theme="pink"] body {
+  background: linear-gradient(135deg, 
+    #fff5f5 0%, 
+    #fff0f3 25%, 
+    #fce7f3 50%, 
+    #fdf2f8 75%, 
+    #fef1f6 100%
+  );
+  background-attachment: fixed;
+}
+
+/* 粉色主题卡片样式 */
+[data-theme="pink"] .card {
+  background: linear-gradient(145deg, 
+    rgba(255, 255, 255, 0.95) 0%, 
+    rgba(254, 242, 248, 0.9) 100%
+  );
+  box-shadow: 
+    0 4px 20px rgba(244, 114, 182, 0.08),
+    0 1px 3px rgba(244, 114, 182, 0.05);
+  border: 1px solid rgba(251, 207, 232, 0.5);
+}
+
+[data-theme="pink"] .card:hover {
+  box-shadow: 
+    0 8px 30px rgba(244, 114, 182, 0.12),
+    0 2px 6px rgba(244, 114, 182, 0.08);
+  border-color: rgba(244, 114, 182, 0.3);
+}
+
+/* 粉色主题按钮样式 */
+[data-theme="pink"] .btn-primary,
+[data-theme="pink"] button[class*="bg-primary"] {
+  background: linear-gradient(135deg, #f472b6 0%, #ec4899 100%);
+  box-shadow: 0 4px 15px rgba(236, 72, 153, 0.3);
+}
+
+[data-theme="pink"] .btn-primary:hover,
+[data-theme="pink"] button[class*="bg-primary"]:hover {
+  background: linear-gradient(135deg, #ec4899 0%, #db2777 100%);
+  box-shadow: 0 6px 20px rgba(236, 72, 153, 0.4);
+}
+
+/* 粉色主题标题栏 */
+[data-theme="pink"] .titlebar {
+  background: linear-gradient(90deg, 
+    rgba(255, 245, 247, 0.98) 0%, 
+    rgba(254, 242, 248, 0.98) 100%
+  );
+  border-bottom: 1px solid rgba(251, 207, 232, 0.6);
+}
+
+/* 粉色主题输入框 */
+[data-theme="pink"] input,
+[data-theme="pink"] textarea {
+  background: rgba(255, 255, 255, 0.8);
+  border: 1.5px solid rgba(251, 207, 232, 0.6);
+}
+
+[data-theme="pink"] input:focus,
+[data-theme="pink"] textarea:focus {
+  border-color: #f472b6;
+  box-shadow: 0 0 0 3px rgba(244, 114, 182, 0.15);
+}
+
+/* 粉色主题滚动条 */
+[data-theme="pink"] ::-webkit-scrollbar {
+  width: 8px;
+}
+
+[data-theme="pink"] ::-webkit-scrollbar-track {
+  background: rgba(251, 207, 232, 0.3);
+  border-radius: 4px;
+}
+
+[data-theme="pink"] ::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #f9a8d4 0%, #f472b6 100%);
+  border-radius: 4px;
+}
+
+[data-theme="pink"] ::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #f472b6 0%, #ec4899 100%);
+}
+
+/* 粉色主题徽章 */
+[data-theme="pink"] .badge {
+  background: linear-gradient(135deg, #fce7f3 0%, #fbcfe8 100%);
+  color: #be185d;
+  border: 1px solid rgba(244, 114, 182, 0.3);
+}
+
+/* 粉色主题开关按钮 */
+[data-theme="pink"] input[type="checkbox"]:checked + div {
+  background: linear-gradient(135deg, #f472b6 0%, #ec4899 100%);
+}
+
+/* 粉色主题选中状态 */
+[data-theme="pink"] .ring-primary {
+  --tw-ring-color: rgba(244, 114, 182, 0.5);
+}
+
+/* 粉色主题链接 */
+[data-theme="pink"] a {
+  color: #db2777;
+}
+
+[data-theme="pink"] a:hover {
+  color: #be185d;
+}

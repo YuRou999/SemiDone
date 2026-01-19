@@ -1,0 +1,155 @@
+/* Light Theme - 明亮清新风格 */
+[data-theme="light"] {
+  /* 主色调 */
+  --primary: 37 99 235; /* blue-600 */
+  --primary-foreground: 255 255 255; /* white */
+  
+  /* 背景色 */
+  --background: 248 250 252; /* slate-50 */
+  --foreground: 15 23 42; /* slate-900 */
+  
+  /* 卡片 */
+  --card: 255 255 255; /* white */
+  --card-foreground: 15 23 42; /* slate-900 */
+  
+  /* 弹出层 */
+  --popover: 255 255 255; /* white */
+  --popover-foreground: 15 23 42; /* slate-900 */
+  
+  /* 次要色 - 浅灰色 */
+  --secondary: 226 232 240; /* slate-200 */
+  --secondary-foreground: 15 23 42;
+  
+  /* 静音色 - 中性灰 */
+  --muted: 241 245 249; /* slate-100 */
+  --muted-foreground: 71 85 105; /* slate-600 */
+  
+  /* 强调色 - 天空蓝 */
+  --accent: 224 242 254; /* sky-50 */
+  --accent-foreground: 15 23 42;
+  
+  /* 破坏性操作 */
+  --destructive: 239 68 68; /* red-500 */
+  --destructive-foreground: 255 255 255;
+  
+  /* 边框 - 浅色边框 */
+  --border: 226 232 240; /* slate-200 */
+  --input: 226 232 240;
+  
+  /* 环形指示器 */
+  --ring: 14 165 233; /* sky-500 */
+}
+
+/* Light主题特有的样式增强 */
+[data-theme="light"] {
+  /* 待办项样式 */
+  .task-item {
+    background: linear-gradient(135deg, rgb(248 250 252) 0%, rgb(241 245 249) 100%);
+    border: 1px solid rgb(226 232 240);
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  }
+  
+  .task-item:hover {
+    background: linear-gradient(135deg, rgb(241 245 249) 0%, rgb(226 232 240) 100%);
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  }
+  
+  /* 按钮样式 */
+  .btn-primary {
+    background: linear-gradient(135deg, rgb(14 165 233) 0%, rgb(2 132 199) 100%);
+    box-shadow: 0 2px 4px 0 rgb(14 165 233 / 0.3);
+  }
+  
+  .btn-primary:hover {
+    background: linear-gradient(135deg, rgb(2 132 199) 0%, rgb(3 105 161) 100%);
+    box-shadow: 0 4px 8px 0 rgb(14 165 233 / 0.4);
+  }
+  
+  /* 统计卡片 */
+  .stats-card {
+    background: linear-gradient(135deg, rgb(255 255 255) 0%, rgb(248 250 252) 100%);
+    border: 1px solid rgb(226 232 240);
+    box-shadow: 0 2px 4px 0 rgb(0 0 0 / 0.05);
+  }
+  
+  /* 进度条 */
+  .progress-bar {
+    background: linear-gradient(90deg, rgb(14 165 233) 0%, rgb(56 189 248) 100%);
+  }
+  
+  /* 筛选按钮 */
+  .filter-button.active {
+    background: linear-gradient(135deg, rgb(14 165 233) 0%, rgb(2 132 199) 100%);
+    color: white;
+    box-shadow: 0 2px 4px 0 rgb(14 165 233 / 0.3);
+  }
+  
+  /* 表单元素 */
+  .form-input:focus {
+    border-color: rgb(14 165 233);
+    box-shadow: 0 0 0 3px rgb(14 165 233 / 0.1);
+  }
+  
+  /* 优先级标签 */
+  .priority-high {
+    background: linear-gradient(135deg, rgb(254 226 226) 0%, rgb(252 165 165) 100%);
+    color: rgb(153 27 27);
+  }
+  
+  .priority-medium {
+    background: linear-gradient(135deg, rgb(254 240 138) 0%, rgb(251 191 36) 100%);
+    color: rgb(146 64 14);
+  }
+  
+  .priority-low {
+    background: linear-gradient(135deg, rgb(220 252 231) 0%, rgb(134 239 172) 100%);
+    color: rgb(22 101 52);
+  }
+  
+  /* 阴影效果 */
+  .shadow-card {
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  }
+  
+  .shadow-hover:hover {
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  }
+  
+  /* 悬停效果 */
+  .hover-lift:hover {
+    transform: translateY(-2px);
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  /* 渐变背景 */
+  .gradient-bg {
+    background: linear-gradient(135deg, rgb(224 242 254) 0%, rgb(186 230 253) 100%);
+  }
+  
+  /* 图标颜色 */
+  .icon-primary {
+    color: rgb(14 165 233);
+  }
+  
+  .icon-secondary {
+    color: rgb(100 116 139);
+  }
+  
+  /* 滚动条样式 */
+  .scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .scrollbar::-webkit-scrollbar-track {
+    background: rgb(241 245 249);
+  }
+  
+  .scrollbar::-webkit-scrollbar-thumb {
+    background: rgb(14 165 233);
+    border-radius: 3px;
+  }
+  
+  .scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgb(2 132 199);
+  }
+}

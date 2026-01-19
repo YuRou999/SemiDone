@@ -1,0 +1,70 @@
+{
+  "$schema": "../node_modules/@tauri-apps/cli/config.schema.json",
+  "identifier": "com.tauri.windows-todo",
+  "productName": "事半·SemiDone",
+  "version": "3.0.0",
+  "build": {
+    "beforeDevCommand": "vite",
+    "beforeBuildCommand": "npm run build",
+    "frontendDist": "../dist",
+    "devUrl": "http://localhost:5173"
+  },
+  "bundle": {
+    "active": true,
+    "targets": ["nsis"],
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.icns",
+      "icons/icon.ico"
+    ]
+  },
+  "app": {
+    "security": {
+      "csp": null,
+      "capabilities": [
+        {
+          "identifier": "main-capability",
+          "description": "Capability for the main window",
+          "windows": [
+            "main"
+          ],
+          "permissions": [
+            "core:path:default",
+            "core:event:default",
+            "core:window:default",
+            "core:window:allow-set-always-on-top",
+            "core:window:allow-set-size",
+            "core:window:allow-set-resizable",
+            "core:window:allow-set-effects",
+            "core:app:default",
+            "core:resources:default",
+            "core:menu:default",
+            "core:tray:default",
+            "fs:read-all",
+            "fs:write-all",
+            "fs:allow-mkdir",
+            "fs:allow-remove"
+          ]
+        }
+      ]
+    },
+    "windows": [
+      {
+        "fullscreen": false,
+        "resizable": true,
+        "title": "事半·SemiDone",
+        "width": 550,
+        "height": 1000,
+        "minWidth": 400,
+        "minHeight": 700,
+        "transparent": true,
+        "decorations": false,
+        "shadow": false,
+        "dragDropEnabled": false,
+        "maximizable": false
+      }
+    ]
+  }
+}

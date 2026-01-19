@@ -1,0 +1,850 @@
+/* 导入主题样式 */
+@import './styles/themes/light.css';
+@import './styles/themes/pink.css';
+@import './styles/themes/glass.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 基础主题变量 */
+:root {
+  /* 默认主题 - 中性色调 */
+  --primary: 220 100% 50%;
+  --primary-foreground: 0 0% 100%;
+  --background: 0 0% 100%;
+  --foreground: 220 13% 18%;
+  --card: 0 0% 100%;
+  --card-foreground: 220 13% 18%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 220 13% 18%;
+  --secondary: 220 14% 96%;
+  --secondary-foreground: 220 9% 46%;
+  --muted: 220 14% 96%;
+  --muted-foreground: 220 9% 46%;
+  --accent: 220 14% 96%;
+  --accent-foreground: 220 9% 15%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 220 13% 91%;
+  --input: 220 13% 91%;
+  --ring: 220 100% 50%;
+  --ring-offset-background: 0 0% 100%;
+  --radius: 0.5rem;
+}
+
+/* 全局样式 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  border-color: hsl(var(--border));
+}
+
+/* 确保内容填满整个窗口 - 无边距无边框 */
+html, body, #root {
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  overflow: hidden;
+  border: none !important;
+  outline: none !important;
+}
+
+.dark {
+  --background: 222 84% 4.9%;
+  --foreground: 210 40% 98%;
+  --card: 222 84% 4.9%;
+  --card-foreground: 210 40% 98%;
+  --popover: 222 84% 4.9%;
+  --popover-foreground: 210 40% 98%;
+  --primary: 210 40% 98%;
+  --primary-foreground: 222.2 47.4% 11.2%;
+  --secondary: 217.2 32.6% 17.5%;
+  --secondary-foreground: 210 40% 98%;
+  --muted: 217.2 32.6% 17.5%;
+  --muted-foreground: 215 20.2% 65.1%;
+  --accent: 217.2 32.6% 17.5%;
+  --accent-foreground: 210 40% 98%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 217.2 32.6% 17.5%;
+  --input: 217.2 32.6% 17.5%;
+  --ring: 212.7 26.8% 83.9%;
+}
+
+body {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-feature-settings: "rlig" 1, "calt" 1;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* 透明模式 - 窗口透明效果 */
+:root {
+  --window-opacity: 1;
+}
+
+/* 透明模式下的背景 */
+body.transparent-mode {
+  background-color: transparent !important;
+}
+
+body.transparent-mode #root {
+  background-color: transparent !important;
+}
+
+body.transparent-mode .h-screen {
+  background-color: hsla(var(--background) / var(--window-opacity)) !important;
+}
+
+body.transparent-mode .bg-background {
+  background-color: hsla(var(--background) / var(--window-opacity)) !important;
+}
+
+body.transparent-mode .bg-card {
+  background-color: hsla(var(--card) / var(--window-opacity)) !important;
+}
+
+body.transparent-mode .card {
+  background-color: hsla(var(--card) / var(--window-opacity)) !important;
+  backdrop-filter: blur(1px);
+}
+
+/* 标题栏透明 */
+body.transparent-mode .titlebar {
+  background-color: hsla(var(--background) / var(--window-opacity)) !important;
+  border-bottom-color: hsla(var(--border) / var(--window-opacity)) !important;
+  backdrop-filter: blur(1px);
+}
+
+/* 内容区域透明 */
+body.transparent-mode .overflow-y-auto {
+  background-color: hsla(var(--background) / var(--window-opacity)) !important;
+}
+
+/* 深色主题滚动条样式 */
+.dark ::-webkit-scrollbar {
+  width: 8px;
+  background-color: transparent;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+/* 深色主题日期/时间输入框图标修复 */
+.dark input[type="date"]::-webkit-calendar-picker-indicator,
+.dark input[type="time"]::-webkit-calendar-picker-indicator,
+.dark input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+  cursor: pointer;
+}
+
+/* 点击整个输入框即可打开日期选择器 */
+input[type="date"],
+input[type="time"],
+input[type="datetime-local"] {
+  cursor: pointer;
+}
+
+/* 移除透明模式下可能出现的白边 */
+body.transparent-mode * {
+  border-color: hsla(var(--border) / var(--window-opacity));
+}
+
+/* 透明模式下弹窗蒙版 - 增强可读性 */
+body.transparent-mode .fixed.inset-0 {
+  background-color: rgba(0, 0, 0, 0.7) !important;
+  backdrop-filter: blur(4px);
+}
+
+/* 透明模式下弹窗内容 - 不透明背景 */
+body.transparent-mode .fixed.inset-0 > div,
+body.transparent-mode [role="dialog"],
+body.transparent-mode [role="alertdialog"] {
+  background-color: hsl(var(--card)) !important;
+  backdrop-filter: none;
+}
+
+/* 主题切换动画 */
+.theme-transition {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 通用组件样式 */
+.btn {
+  @apply inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background;
+}
+
+.btn-primary {
+  @apply bg-primary text-primary-foreground hover:bg-primary/90;
+}
+
+.btn-secondary {
+  @apply bg-secondary text-secondary-foreground hover:bg-secondary/80;
+}
+
+.btn-destructive {
+  @apply bg-destructive text-destructive-foreground hover:bg-destructive/90;
+}
+
+.btn-outline {
+  @apply border border-input bg-background hover:bg-accent hover:text-accent-foreground;
+}
+
+.btn-ghost {
+  @apply hover:bg-accent hover:text-accent-foreground;
+}
+
+.btn-link {
+  @apply text-primary underline-offset-4 hover:underline;
+}
+
+/* 卡片样式 */
+.card {
+  @apply rounded-lg border bg-card text-card-foreground shadow-sm;
+}
+
+.card-header {
+  @apply flex flex-col space-y-1.5 p-6;
+}
+
+.card-title {
+  @apply text-2xl font-semibold leading-none tracking-tight;
+}
+
+.card-description {
+  @apply text-sm text-muted-foreground;
+}
+
+.card-content {
+  @apply p-6 pt-0;
+}
+
+.card-footer {
+  @apply flex items-center p-6 pt-0;
+}
+
+/* 输入框样式 */
+.input {
+  @apply flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50;
+}
+
+/* 标签样式 */
+.label {
+  @apply text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70;
+}
+
+/* 徽章样式 */
+.badge {
+  @apply inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2;
+}
+
+.badge-default {
+  @apply border-transparent bg-primary text-primary-foreground hover:bg-primary/80;
+}
+
+.badge-secondary {
+  @apply border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80;
+}
+
+.badge-destructive {
+  @apply border-transparent bg-destructive text-destructive-foreground hover:bg-destructive/80;
+}
+
+.badge-outline {
+  @apply text-foreground;
+}
+
+/* 滚动条样式 */
+.scrollbar-thin {
+  scrollbar-width: thin;
+  scrollbar-color: hsl(var(--muted-foreground)) hsl(var(--muted));
+}
+
+.scrollbar-thin::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: hsl(var(--muted));
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted-foreground));
+  border-radius: 3px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--foreground));
+}
+
+/* 动画类 */
+.animate-in {
+  animation-duration: 0.15s;
+  animation-fill-mode: both;
+}
+
+.animate-out {
+  animation-duration: 0.15s;
+  animation-fill-mode: both;
+}
+
+.fade-in {
+  animation-name: fadeIn;
+}
+
+.fade-out {
+  animation-name: fadeOut;
+}
+
+.slide-in-from-top {
+  animation-name: slideInFromTop;
+}
+
+.slide-in-from-bottom {
+  animation-name: slideInFromBottom;
+}
+
+.slide-in-from-left {
+  animation-name: slideInFromLeft;
+}
+
+.slide-in-from-right {
+  animation-name: slideInFromRight;
+}
+
+.slide-out-to-top {
+  animation-name: slideOutToTop;
+}
+
+.slide-out-to-bottom {
+  animation-name: slideOutToBottom;
+}
+
+.slide-out-to-left {
+  animation-name: slideOutToLeft;
+}
+
+.slide-out-to-right {
+  animation-name: slideOutToRight;
+}
+
+.zoom-in {
+  animation-name: zoomIn;
+}
+
+.zoom-out {
+  animation-name: zoomOut;
+}
+
+/* 动画关键帧 */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes slideInFromTop {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInFromBottom {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInFromLeft {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInFromRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOutToTop {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-100%);
+  }
+}
+
+@keyframes slideOutToBottom {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(100%);
+  }
+}
+
+@keyframes slideOutToLeft {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes slideOutToRight {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes zoomOut {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+}
+
+:root {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  line-height: 1.5;
+  font-weight: 400;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Pink Theme - 适度粉色主题 */
+[data-theme="pink"] {
+  --background: 0 0% 100%;
+  --foreground: 340 10% 15%;
+  --card: 0 0% 100%;
+  --card-foreground: 340 10% 15%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 340 10% 15%;
+  --primary: 346 77% 65%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 340 4% 96%;
+  --secondary-foreground: 340 6% 20%;
+  --muted: 340 4% 96%;
+  --muted-foreground: 340 4% 46%;
+  --accent: 340 4% 96%;
+  --accent-foreground: 340 6% 20%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 340 6% 91%;
+  --input: 340 6% 91%;
+  --ring: 346 77% 65%;
+  --radius: 0.5rem;
+}
+
+/* 粉色主题暗色模式 */
+[data-theme="pink"].dark {
+  --background: 340 10% 8%;
+  --foreground: 340 5% 95%;
+  --card: 340 10% 8%;
+  --card-foreground: 340 5% 95%;
+  --popover: 340 10% 8%;
+  --popover-foreground: 340 5% 95%;
+  --primary: 346 77% 65%;
+  --primary-foreground: 340 10% 8%;
+  --secondary: 340 10% 15%;
+  --secondary-foreground: 340 5% 95%;
+  --muted: 340 10% 15%;
+  --muted-foreground: 340 5% 65%;
+  --accent: 340 10% 15%;
+  --accent-foreground: 340 5% 95%;
+  --destructive: 0 62% 50%;
+  --destructive-foreground: 340 5% 95%;
+  --border: 340 10% 15%;
+  --input: 340 10% 15%;
+  --ring: 346 77% 65%;
+}
+
+/* 粉色主题特殊效果 */
+[data-theme="pink"] .card {
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(255, 182, 193, 0.35) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255, 192, 203, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(255, 218, 224, 0.25) 0%, transparent 50%),
+    linear-gradient(135deg, 
+      rgba(255, 255, 255, 0.75) 0%,
+      rgba(252, 231, 243, 0.6) 100%
+    );
+  border: 1px solid rgba(236, 72, 153, 0.25);
+  box-shadow: 
+    0 8px 32px rgba(236, 72, 153, 0.18),
+    0 4px 16px rgba(255, 182, 193, 0.12),
+    0 1px 3px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  position: relative;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+[data-theme="pink"] .card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 10% 20%, rgba(255, 182, 193, 0.12) 0%, transparent 25%),
+    radial-gradient(circle at 90% 80%, rgba(255, 192, 203, 0.1) 0%, transparent 25%),
+    radial-gradient(circle at 50% 50%, rgba(255, 218, 224, 0.08) 0%, transparent 30%);
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+[data-theme="pink"] .btn-primary {
+  background: 
+    radial-gradient(circle at 30% 30%, rgba(255, 182, 193, 0.3) 0%, transparent 70%),
+    linear-gradient(135deg, 
+      hsl(var(--primary)) 0%,
+      hsl(var(--primary) / 0.85) 100%
+    );
+  box-shadow: 
+    0 6px 20px rgba(236, 72, 153, 0.3),
+    0 2px 8px rgba(255, 182, 193, 0.2),
+    0 1px 3px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 182, 193, 0.2);
+}
+
+[data-theme="pink"] .btn-primary:hover {
+  background: 
+    radial-gradient(circle at 30% 30%, rgba(255, 182, 193, 0.4) 0%, transparent 70%),
+    linear-gradient(135deg, 
+      hsl(var(--primary) / 0.9) 0%,
+      hsl(var(--primary) / 0.75) 100%
+    );
+  box-shadow: 
+    0 8px 28px rgba(236, 72, 153, 0.4),
+    0 4px 12px rgba(255, 182, 193, 0.25),
+    0 2px 4px rgba(0, 0, 0, 0.1);
+  transform: translateY(-1px);
+}
+
+/* 粉色主题待办卡片 - 毛玻璃效果 */
+[data-theme="pink"] .task-card {
+  background: 
+    linear-gradient(90deg, 
+      rgba(255, 182, 193, 0.4) 0%,
+      rgba(255, 192, 203, 0.35) 25%,
+      rgba(255, 218, 224, 0.3) 50%,
+      rgba(252, 231, 243, 0.8) 100%
+    );
+  border: 1px solid rgba(236, 72, 153, 0.3) !important;
+  position: relative;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+[data-theme="pink"] .task-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 25% 25%, rgba(255, 218, 224, 0.15) 0%, transparent 30%),
+    radial-gradient(circle at 75% 75%, rgba(255, 192, 203, 0.12) 0%, transparent 30%),
+    radial-gradient(circle at 50% 10%, rgba(255, 182, 193, 0.1) 0%, transparent 25%);
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+[data-theme="pink"] .task-card:hover {
+  background: 
+    linear-gradient(90deg, 
+      rgba(255, 182, 193, 0.5) 0%,
+      rgba(255, 192, 203, 0.45) 25%,
+      rgba(255, 218, 224, 0.35) 50%,
+      rgba(252, 231, 243, 0.85) 100%
+    );
+  border-color: rgba(236, 72, 153, 0.4);
+  transform: translateY(-1px);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+[data-theme="pink"] .task-card:hover::before {
+  background: 
+    radial-gradient(circle at 25% 25%, rgba(255, 218, 224, 0.2) 0%, transparent 30%),
+    radial-gradient(circle at 75% 75%, rgba(255, 192, 203, 0.18) 0%, transparent 30%),
+    radial-gradient(circle at 50% 10%, rgba(255, 182, 193, 0.15) 0%, transparent 25%);
+}
+
+/* 粉色主题统计卡片 */
+[data-theme="pink"] .stats-card {
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(255, 182, 193, 0.12) 0%, transparent 45%),
+    radial-gradient(circle at 80% 20%, rgba(255, 192, 203, 0.12) 0%, transparent 45%),
+    linear-gradient(135deg, 
+      rgba(255, 255, 255, 0.96) 0%,
+      rgba(252, 231, 243, 0.3) 100%
+    );
+  border: 1px solid rgba(236, 72, 153, 0.15);
+  box-shadow: 
+    0 6px 24px rgba(236, 72, 153, 0.1),
+    0 2px 8px rgba(255, 182, 193, 0.08),
+    0 1px 3px rgba(0, 0, 0, 0.05);
+  position: relative;
+}
+
+[data-theme="pink"] .stats-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 30% 30%, rgba(255, 218, 224, 0.06) 0%, transparent 35%),
+    radial-gradient(circle at 70% 70%, rgba(255, 192, 203, 0.06) 0%, transparent 35%);
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+/* 粉色主题快速添加卡片 */
+[data-theme="pink"] .quick-add-card {
+  background: 
+    radial-gradient(circle at 25% 75%, rgba(255, 182, 193, 0.1) 0%, transparent 40%),
+    radial-gradient(circle at 75% 25%, rgba(255, 192, 203, 0.1) 0%, transparent 40%),
+    linear-gradient(135deg, 
+      rgba(255, 255, 255, 0.97) 0%,
+      rgba(252, 231, 243, 0.25) 100%
+    );
+  border: 1px solid rgba(236, 72, 153, 0.12);
+  box-shadow: 
+    0 4px 16px rgba(236, 72, 153, 0.08),
+    0 2px 6px rgba(255, 182, 193, 0.06),
+    0 1px 2px rgba(0, 0, 0, 0.04);
+  position: relative;
+}
+
+[data-theme="pink"] .quick-add-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 20%, rgba(255, 218, 224, 0.05) 0%, transparent 30%),
+    radial-gradient(circle at 80% 80%, rgba(255, 192, 203, 0.05) 0%, transparent 30%);
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+/* 粉色主题背景装饰 */
+[data-theme="pink"] body {
+  background: 
+    radial-gradient(circle at 10% 20%, rgba(255, 182, 193, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 90% 80%, rgba(255, 192, 203, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(255, 218, 224, 0.02) 0%, transparent 50%),
+    hsl(var(--background));
+}
+
+
+/* 粉色主题完成状态卡片 */
+[data-theme="pink"] .task-card.completed {
+  background: 
+    radial-gradient(circle at 15% 85%, rgba(34, 197, 94, 0.15) 0%, transparent 40%),
+    radial-gradient(circle at 85% 15%, rgba(255, 182, 193, 0.2) 0%, transparent 40%),
+    radial-gradient(circle at 50% 50%, rgba(255, 218, 224, 0.15) 0%, transparent 50%),
+    linear-gradient(135deg, 
+      rgba(240, 253, 244, 0.8) 0%,
+      rgba(240, 253, 244, 1) 100%
+    ) !important;
+  border: 1px solid rgba(34, 197, 94, 0.25) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+}
+
+/* 淡入动画 */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* 名言切换动画 */
+@keyframes quoteChange {
+  0% {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  10% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  90% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(10px);
+  }
+}
+
+/* 弹窗缩放动画 */
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.3s ease-out;
+}
+
+/* 深色主题统计卡片优化 */
+.dark .stat-item-card {
+  background: rgba(30, 41, 59, 0.5) !important;
+  border-color: rgba(71, 85, 105, 0.5) !important;
+}
+
+.dark .stat-item-card:hover {
+  background: rgba(30, 41, 59, 0.7) !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* 深色主题下的统计卡片背景色 */
+.dark .bg-blue-50 {
+  background-color: rgba(59, 130, 246, 0.1) !important;
+}
+
+.dark .bg-green-50 {
+  background-color: rgba(34, 197, 94, 0.1) !important;
+}
+
+.dark .bg-gray-50 {
+  background-color: rgba(148, 163, 184, 0.1) !important;
+}
+
+.dark .bg-red-50 {
+  background-color: rgba(239, 68, 68, 0.1) !important;
+}
+
+.dark .bg-orange-50 {
+  background-color: rgba(249, 115, 22, 0.1) !important;
+}
+
+/* 深色主题下的边框色 */
+.dark .border-blue-200 {
+  border-color: rgba(59, 130, 246, 0.3) !important;
+}
+
+.dark .border-green-200 {
+  border-color: rgba(34, 197, 94, 0.3) !important;
+}
+
+.dark .border-gray-200 {
+  border-color: rgba(148, 163, 184, 0.3) !important;
+}
+
+.dark .border-red-200 {
+  border-color: rgba(239, 68, 68, 0.3) !important;
+}
+
+.dark .border-orange-200 {
+  border-color: rgba(249, 115, 22, 0.3) !important;
+}
+
+/* 深色主题下的文字颜色优化 */
+.dark .text-blue-600 {
+  color: rgb(96, 165, 250) !important;
+}
+
+.dark .text-green-600 {
+  color: rgb(74, 222, 128) !important;
+}
+
+.dark .text-gray-600 {
+  color: rgb(203, 213, 225) !important;
+}
+
+.dark .text-red-600 {
+  color: rgb(248, 113, 113) !important;
+}
+
+.dark .text-orange-600 {
+  color: rgb(251, 146, 60) !important;
+}
