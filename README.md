@@ -1,57 +1,94 @@
-# React + TypeScript + Vite
+# 事半·SemiDone - 轻量级桌面待办应用
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<p align="center">
+  <img src="./public/Logo3D.png" alt="事半·SemiDone Logo3D" width="120" />
+</p>
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+<p align="center">
+  <strong>事半功倍，专注当下</strong>
+</p>
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+<p align="center">
+  一款为 Windows 用户打造的轻量级桌面待办应用
+</p>
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 📖 应用简介
 
-export default tseslint.config({
-  extends: [
-    // other configs...
-    // Enable lint rules for React
-    reactX.configs['recommended-typescript'],
-    // Enable lint rules for React DOM
-    reactDom.configs.recommended,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+**事半·SemiDone** 是一款专为 Windows 用户设计的轻量级桌面待办应用。它采用现代化的技术栈，提供流畅的用户体验，帮助你高效管理日常任务。
+
+> 💡 **名字由来**：「事半」取自成语「事半功倍」，寓意用更少的时间完成更多的事情。SemiDone 则是 Semi（一半）+ Done（完成）的组合，呼应中文名的含义。
+
+## ✨ 核心特性
+
+### 🎯 任务管理
+
+- **快速创建**：一键添加待办，支持标题、描述、优先级、截止日期
+- **图片附件**：支持拖拽上传图片，为任务添加可视化参考
+- **优先级标记**：高/中/低三级优先级，重要任务一目了然
+- **智能筛选**：全部/待办/已完成/逾期/今日，快速定位任务
+- **实时搜索**：关键词搜索，瞬间找到目标任务
+
+### 🎨 个性化体验
+
+- **三套主题**：明亮、深色、甜美粉，满足不同审美需求
+- **透明模式**：深色主题专属，1%-100% 透明度可调
+- **励志名言**：100+ 条精选名言，折叠窗口时自动轮播
+- **用户资料**：自定义头像和用户名，打造专属体验
+
+### 🪟 窗口控制
+
+- **窗口置顶**：一键置顶，任务常驻桌面
+- **窗口折叠**：折叠为迷你条，不遮挡工作区域
+- **自定义标题栏**：无边框设计，简洁美观
+- **拖拽移动**：标题栏可拖拽，随心摆放位置
+
+### 🎉 交互反馈
+
+- **完成动画**：任务完成时播放庆祝动画
+- **Toast 提示**：操作反馈即时可见
+- **进度统计**：实时显示任务完成进度
+
+## 🛠️ 技术架构
+
+| 层级         | 技术选型              |
+| ------------ | --------------------- |
+| **前端框架** | React 18 + TypeScript |
+| **状态管理** | Zustand               |
+| **样式方案** | TailwindCSS           |
+| **图标库**   | Lucide React          |
+| **桌面框架** | Tauri 2.0             |
+| **后端语言** | Rust                  |
+| **数据存储** | 本地 JSON 文件        |
+| **构建工具** | Vite                  |
+
+## 📊 应用数据
+
+- **安装包大小**：约 3MB（NSIS 安装包）
+- **内存占用**：约 50-80MB
+- **启动时间**：< 1 秒
+- **支持系统**：Windows 10/11
+
+## 🔒 隐私安全
+
+- **本地存储**：所有数据存储在本地，不上传云端
+- **无需注册**：开箱即用，无需账号
+- **一键清除**：支持选择性清除数据
+
+## 📝 版本信息
+
+- **当前版本**：v2.1.2
+- **更新日期**：2024-12-02
+- **作者**：魚肉
+- **联系方式**：QQ 1571088982
+
+---
+
+<p align="center">
+  <em>用更少的时间，完成更多的事</em>
+</p>
+
